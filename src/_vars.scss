@@ -1,0 +1,74 @@
+$black:#010101;
+$white: #ffffff;
+$green: #36ae7c;
+$red: #eb5353;
+$yellow: #f9d923;
+$blue: #187498;
+
+$font-anton: 'Anton', sans-serif;
+$font-bebas: 'Bebas Neue', cursive;
+$font-henry: 'Henny Penny', cursive;
+$font-monoton: 'Monoton', cursive;
+$font-sans: 'Open Sans', sans-serif;
+$font-quick: 'Quicksand', sans-serif;
+$font-roboto: 'Roboto', sans-serif;
+
+@mixin buttonAction($name:'none',$width:40px,$height:40px){
+    position: fixed;
+    background-color: $green;
+    color: $white;
+    border-radius: 4px;
+    border: 2px solid $yellow;
+    box-shadow: 0 1px 8px $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    z-index: 100;
+    cursor: pointer;
+    animation: $name 0.5s linear;
+        width: $width;
+        height: $height;
+        @if $name == bannerback {
+            bottom: 8px;
+            left: 8px;
+        } @else if $name == banner{
+            top: 8px;
+            @if $width<= 40px{
+                right: 8px;
+            }
+        }
+        text-decoration: none;
+
+}
+
+@keyframes banner {
+    from {
+       transform: translateY(-100px);
+   }
+   to {
+       transform: translateY(0);
+   }
+}
+
+@keyframes bannerback {
+from {
+    transform: translate(-100px);
+}
+to {
+    transform: translate(0);
+}}
+
+@mixin barras($eje:y){
+    @if $eje == x{
+        transform: rotate(90deg);
+    }
+    content:"";
+    position: absolute;
+    // right: calc(100%/4px + 100%/20px);
+    border-top: 8px solid orange;
+    border-right: 4px solid orange;
+    border-bottom: 8px solid $yellow;
+    border-left: 4px solid $yellow;
+    box-shadow: 0 -4px 6px $black;
+}

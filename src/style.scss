@@ -1,0 +1,103 @@
+@use './vars';
+
+body{
+    max-width: 1920px;
+    font-size: 1rem;
+    font-family: roboto;
+    font-weight: 500;
+    margin:0;
+    padding:0;
+}
+
+@mixin comun(){
+    margin: auto;text-align: center;
+}
+
+
+@mixin  comunFlex($flex:column){
+    
+    
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-direction: $flex;
+}
+
+// NAV MOBILE
+#mobileNav_container{
+    height: 0px
+}
+
+.buttonAction{
+ @include vars.buttonAction(banner);
+ img{
+    filter: invert(100%);
+    width: 65%;
+ }
+&::after{
+    @include vars.barras();
+    top: -0.57em;
+    right: calc(16px/100%)*100%;
+}
+}
+
+.mobileNav_banner{
+    @include vars.buttonAction(banner,200px);
+    font-size: 1.6em;
+   position: relative;
+   margin: auto;
+   &::after{
+    @include vars.barras();
+    top: -0.69em;
+    right: calc(16px/100%)*100%;
+}
+&::before{
+    @include vars.barras();
+    top: -0.69em;
+    right: calc(174px/100%)*100%;
+}
+}
+
+// HEADER
+#header_container{
+    width: 100%;
+}
+
+#header_container-mobile{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.parallax_picture{
+    position: absolute;
+    img{
+        width: 110%;
+    }
+}
+
+.picture_main{
+    position: relative;
+    bottom: -5px;
+}
+// MAIN BODY
+
+#main{
+   width: 100%;
+
+   
+}
+
+.main_title{
+    background-color: vars.$green;
+    color:vars.$white;
+    @include comun();
+    padding: 0.4em 0;
+    *{
+        margin:0.2em
+    }
+    em{
+        color:vars.$black
+    }
+}
+
