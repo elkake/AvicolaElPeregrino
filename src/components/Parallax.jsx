@@ -1,17 +1,16 @@
 import { useParallax } from 'react-scroll-parallax'
 import React from 'react'
 
-function Parallax (props) {
-  console.log(props.start)
+function Parallax ({ start, end, speed, img, alt = 'El Peregrino', nameClass = 'parallax_picture' }) {
   const parallax = useParallax({
-    startScroll: props.start,
-    endScroll: props.end,
-    speed: props.speed
+    startScroll: start,
+    endScroll: end,
+    speed
   })
   return (
         <>
-      <picture ref={parallax.ref} className="parallax_picture">
-        <img src={props.img} alt='El peregrino' />
+      <picture ref={parallax.ref} className={nameClass}>
+        <img src={img} alt={alt} />
     </picture>
         </>
   )

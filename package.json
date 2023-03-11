@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "test": "vitest",
-    "build": "build vitest"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",

@@ -1,26 +1,40 @@
 @use './vars';
 
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
 body{
     max-width: 1920px;
     font-size: 1rem;
     font-family: roboto;
     font-weight: 500;
-    margin:0;
-    padding:0;
 }
 
+picture{
+    img{
+        width: 100%;
+    }
+}
+
+// mixin basicas
 @mixin comun(){
     margin: auto;text-align: center;
 }
 
-
 @mixin  comunFlex($flex:column){
-    
-    
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // flex-direction: $flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $flex;
+}
+
+@mixin comunPicture($width){
+    width: $width;
+    img{
+        width: 100%;
+    }
 }
 
 // NAV MOBILE
@@ -44,7 +58,8 @@ body{
 .mobileNav_banner{
     @include vars.buttonAction(banner,200px);
     font-size: 1.6em;
-   position: relative;
+   right: 0;
+   left: 0;
    margin: auto;
    &::after{
     @include vars.barras();
@@ -83,9 +98,14 @@ body{
 // MAIN BODY
 
 #main{
+    min-height: 100vh;
    width: 100%;
-
-   
+   background-image: url("./svg/body/background.svg");
+   background-attachment: fixed;
+   background-size: contain;
+   background-repeat: repeat-y;
+   section{
+   }
 }
 
 .main_title{
@@ -96,8 +116,104 @@ body{
     *{
         margin:0.2em
     }
+    h1{
+        font-size: 1.5em;
+    }
     em{
-        color:vars.$black
+        color:vars.$black;
+        font-weight: 400;
+        
     }
 }
 
+// en caso quiera que el boton sea absolute
+.main_section-father{
+    position: relative;
+}
+
+.main_section{
+ @include comunFlex();
+ position: relative;
+ width: 95%;
+max-width: 600px;
+ text-align: justify;
+ margin: 0 auto;
+ h3{
+    font-size: 1.6em;
+    margin: 0.8em auto;
+    color: vars.$green;
+    text-shadow: 0 0 1px vars.$green;
+}
+p{
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.2em;
+}
+
+}
+
+.main_about-section{
+    & #main_about_image{
+       width: 98%;
+       max-width: 500px;
+       margin: 2em 0;
+      
+       img{
+           box-shadow: 0 0 0.5em vars.$black;      
+           border: 2px solid vars.$yellow;
+                 width: 100%;
+                 border-radius: 0.5em;
+                
+       }
+       &:hover{
+            box-shadow: none;
+        }
+     }
+}
+
+.main_recipes-section{
+    min-height: 40vh;
+}
+.main_recipes-gallery-container{
+    min-width: 300px;
+    width: 300px ;
+    
+    height: 300px;
+}
+// button general verde y amarillo
+.button_route{
+    border: none;
+    font-weight: 700;
+    @include comunFlex(row);
+    border:2px solid vars.$yellow;
+    width: 180px;
+    height: 50px;
+    border-radius: 7px;
+    background-color: vars.$green;
+    color: vars.$white;
+    font-size: 1.3em;
+    margin: auto;
+    box-shadow: 0 1.3px 2px  vars.$black;
+    transition: all 0.5s  ease;
+    &:hover{
+        box-shadow: 0 0px 2px  vars.$black;
+        
+    }
+}
+
+@keyframes disp {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+// FOOTER
+
+#footer{
+    height: 30vh;
+    background-color: vars.$green;
+}

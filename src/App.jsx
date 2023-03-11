@@ -2,7 +2,8 @@ import React from 'react'
 import MobileHeader from './layout/MobileHeader'
 import MobileNav from './layout/MobileNav'
 import { ParallaxProvider } from 'react-scroll-parallax'
-import Body from './layout/Main'
+import Main from './layout/Main'
+import Footer from './layout/Footer'
 function App () {
   return (
     <div>
@@ -10,7 +11,8 @@ function App () {
       <ParallaxProvider>
         <MobileHeader/>
       </ParallaxProvider>
-      <Body/>
+      <Main/>
+      <Footer/>
     </div>
   )
 }

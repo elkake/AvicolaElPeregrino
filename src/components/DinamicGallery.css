@@ -1,0 +1,81 @@
+.gallery{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.gallery>picture{
+  position: absolute;
+  overflow: hidden;
+  border-radius: 6px;
+  width: 50%;
+    height: 30%;
+   border: 2px solid #0004;
+   transition: all 0.8s ease
+}
+
+.gallery>picture:nth-child(1){
+  bottom: 68%;
+  right: 3%;
+  
+}
+.gallery>picture:nth-child(2){
+  bottom: 54%;
+  left: 3%;
+}
+.gallery>picture:nth-child(3){
+  bottom: 36%;
+      right: 3%;
+  }
+  .gallery>picture:nth-child(4){
+      bottom: 20%;
+      left: 3%;
+  }
+  .gallery>picture:nth-child(5){
+    bottom: 4%;
+    right: 3%;
+  }
+
+.gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .8s ease;
+}
+
+@keyframes left {
+  from{
+    transform: translateX(0px);
+  }
+  50%{
+    
+    transform: translateX(-12%);
+  }
+  to{
+    transform: translateX(0px);
+  }
+}
+
+@keyframes lastItem {
+  from{
+    transform: translateX(0px);
+  }
+  50%{
+    
+    transform: translateX(-12%);
+  }
+  to{
+    transform: translateX(0px);
+  }
+}
+@keyframes right {
+  from{
+    transform: translateX(0px);
+  }
+  50%{
+    
+    transform: translateX(12%);
+  }
+  to{
+    transform: translateX(0px);
+  }
+}
