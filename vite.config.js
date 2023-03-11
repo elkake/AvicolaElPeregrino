@@ -3,9 +3,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react()],
-  jsx: {
-    factory: 'React.createElement',
-    fragment: 'React.Fragment'
-  }
+  base: '/AvicolaElPeregrino/'
   // otras opciones de configuración de Vite aquí
 })
