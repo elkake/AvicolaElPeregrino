@@ -1,7 +1,12 @@
 @use './vars';
 
+.__vercel-feedback {
+    display: none !important;
+  }
+
 *{
     box-sizing: border-box;
+    font-family: roboto;
     margin:0;
     padding:0;
 }
@@ -121,13 +126,13 @@ picture{
     em{
         color:vars.$black;
         font-weight: 400;
-        
     }
 }
 
 // en caso quiera que el boton sea absolute
-.main_section-father{
+.main_seccion-father{
     position: relative;
+    margin-bottom: 2em
 }
 
 .main_section{
@@ -161,24 +166,37 @@ p{
            box-shadow: 0 0 0.5em vars.$black;      
            border: 2px solid vars.$yellow;
                  width: 100%;
-                 border-radius: 0.5em;
-                
+                 border-radius: 0.5em;   
        }
        &:hover{
             box-shadow: none;
         }
      }
 }
+// mobile
+.main_products-slider{
+    border: 2px solid vars.$yellow;
+    border-radius: 8px;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+.main_products-section{
+    min-height: 40vh;
+}
 
 .main_recipes-section{
     min-height: 40vh;
 }
+// mobile
 .main_recipes-gallery-container{
     min-width: 300px;
     width: 300px ;
-    
     height: 300px;
 }
+
+
 // button general verde y amarillo
 .button_route{
     border: none;
@@ -196,7 +214,6 @@ p{
     transition: all 0.5s  ease;
     &:hover{
         box-shadow: 0 0px 2px  vars.$black;
-        
     }
 }
 
@@ -213,6 +230,67 @@ p{
 // FOOTER
 
 #footer{
-    height: 30vh;
+    padding: 1em;
+    // cabiar en fullscreen
+    min-height: 50vh;
+    width: 100%;
     background-color: vars.$green;
+    // position: relative;
+    color: vars.$white;
+    @include comunFlex(column);
+    justify-content: space-between;;
+    .footer_map{
+        background-color: vars.$yellow;
+        border-radius: 8px;
+        width: 95%;
+       text-align: center;
+        max-width: 300px;
+        max-height: 300px;
+        box-shadow: 0 1px 5px #0009;
+        iframe{
+            border-radius: 8px 8px 0 0;
+            // border: 4px solid vars.$yellow;
+            height: 100%;
+            width: 100%;
+        }
+        h4{
+            text-shadow: 0 0 2px vars.$black;
+        }
+    }
+    .footer_text{
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}
+
+.footer_text{
+    @include comunFlex();
+    .footer_text-ico1{
+        @include comunFlex(row);
+    }
+    .footer_text-ico{
+        width: 60px;
+        height: 60px;
+        border: 2px solid vars.$yellow;
+        background-color:  vars.$yellow;
+        border-radius: 50%;
+        box-shadow: 0 1px 5px #0009;
+        @include comunFlex();
+        margin: 1em;
+        img{
+            filter: invert(100%) drop-shadow(0 0 1px #000);
+            width: 70%;
+            height: 70%;
+        }
+    }
+
+    .footer_text-ico2{
+        @include comunFlex();
+        font-size: 1.1em;
+        a{
+            margin-bottom:0.2em;
+        }
+    }
 }
