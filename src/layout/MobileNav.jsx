@@ -25,12 +25,12 @@ function MobileNav () {
   return (
     <div id='mobileNav_container'>
         <nav ref={navModal}>
-          <picture><img src="" alt="" /></picture>
-          <Link to="/">INICIO</Link>
-          <Link to='/nosotros'>NOSOTROS</Link>
-          <Link to='/productos'>PRODUCTOS</Link>
-          <Link to='/recetas'>RECETES</Link>
-          <a href="#footer">CONTACTANOS</a>
+          <picture></picture>
+          <Link to="/" onClick={toggleShow}>INICIO</Link>
+          <Link to='/nosotros' onClick={toggleShow}>NOSOTROS</Link>
+          <Link to='/productos' onClick={toggleShow}>PRODUCTOS</Link>
+          <Link to='/recetas' onClick={toggleShow}>RECETES</Link>
+          <a href="#footer" onClick={toggleShow}>CONTACTANOS</a>
         </nav>
         <a className='mobileNav_banner' href="#mobileNav_container">EL PEREGRINO</a>
 

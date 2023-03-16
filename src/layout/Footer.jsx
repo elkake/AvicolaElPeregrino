@@ -13,7 +13,8 @@ function Footer () {
     <div id='footer'>
 
         <section className='footer_map'>
-          <iframe className='iframe' src="https://maps.google.com/?ll=23.135249,-82.359685&z=14&t=m&output=embed"><a href="https://www.gps.ie/car-satnav-gps/" target='_blank' rel="noreferrer"></a></iframe>
+       <iframe width="100%" height="100%" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=MALLEA%20106%20-%208000%20BAHIA%20BLANCA+(El%20Peregrino%20SRL)&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/" target='_blank' rel="noreferrer">AVICOLA EL PEREGRINO SRL</a></iframe>
+          {/* <iframe className='iframe' src="https://maps.google.com/?ll=-38.6985794,-62.2886808&z=14&t=m&output=embed"><a href="https://www.gps.ie/car-satnav-gps/" target='_blank' rel="noreferrer"></a></iframe> */}
           <h4>MALLEA 106 - 8000 BAHIA BLANCA <br /> PROVINCIA BS AS</h4>
         </section>
         <section className='footer_text'>

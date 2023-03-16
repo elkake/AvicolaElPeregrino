@@ -13,7 +13,7 @@ function App () {
   // durante la carga el body no muestra scroll
   useEffect(() => {
     document.body.style = 'overflow-y:hidden'
-    setTimeout(() => (document.body.style = ''), 2000)
+    setTimeout(() => (document.body.style = ''), 1400)
   }, [])
 
   return (
