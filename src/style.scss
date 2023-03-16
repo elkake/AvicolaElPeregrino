@@ -1,9 +1,16 @@
 @use './vars';
 
+// -------------------------------------------------------
+// -------------------OTHERS---------------------
+// -------------------------------------------------------
+
 .__vercel-feedback {
     display: none !important;
   }
-
+  html {
+    scroll-behavior: smooth;
+  }
+  
 *{
     box-sizing: border-box;
     font-family: roboto;
@@ -15,15 +22,25 @@ body{
     font-size: 1rem;
     font-family: roboto;
     font-weight: 500;
+    background-image: url(./svg/body/background.svg);
+    background-attachment: fixed;
 }
 
 picture{
     img{
         width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
-// mixin basicas
+iframe {
+    pointer-events: none;
+  }
+
+// -------------------------------------------------------
+// --------------------MIXINS--------------------
+// -------------------------------------------------------
 @mixin comun(){
     margin: auto;text-align: center;
 }
@@ -42,29 +59,76 @@ picture{
     }
 }
 
-// NAV MOBILE
+// -------------------------------------------------------
+// ------------------NAV MOBILE----------------------
+// -------------------------------------------------------
 #mobileNav_container{
-    height: 0px
-}
-
-.buttonAction{
- @include vars.buttonAction(banner);
- img{
-    filter: invert(100%);
-    width: 65%;
- }
-&::after{
-    @include vars.barras();
-    top: -0.57em;
-    right: calc(16px/100%)*100%;
-}
+    nav{
+        position:fixed;
+        z-index: 20;
+        display: flex;
+        flex-direction: column;
+        width: 320px;
+        height: 100%;
+        padding: 1em 0 2em 0;
+        transition: right 0.5s ease,background-color 0.7s ease;
+        justify-content: center;
+        
+        picture{
+            @include vars.buttonAction("",295px,295px,transparent);
+            position:relative;
+            margin-bottom: 0.5em;
+        @include vars.backImage('./svg/nav/chicken.svg',center,no-repeat,cover);
+        &::after{
+            @include vars.barras(x,12px,4px);
+            right: -0.57em;
+            top: calc(60px/100%)*100%;
+        }
+        &::before{
+            @include vars.barras(x,12px,4px);
+            right: -0.57em;
+            top: calc(174px/100%)*100%;
+        }
+        }
+        a{
+            @include vars.buttonAction(banner,295px,40px);
+            margin-bottom: 0.25em;
+            position:relative;
+            &::after{
+                @include vars.barras(y,4px,4px,0);
+                top: -0.3em;
+                right: calc(60px/100%)*100%;
+            }
+            &::before{
+                @include vars.barras(y,4px,4px,0);
+                top: -0.3em;
+                right: calc(220px/100%)*100%;
+            }
+            &:nth-child(2){
+                z-index: 10;
+                &::after{
+                    @include vars.barras(y,19.8px,4px,0 -2px 4px);
+                    top: -1.29em;
+                    z-index:-10;
+                    right: calc(60px/100%)*100%;
+                }
+                &::before{
+                    @include vars.barras(y,19.8px,4px,0 -2px 4px);
+                    top: -1.29em;
+                    z-index:-10;
+                    right: calc(220px/100%)*100%;
+                }
+            }
+        }
+    }
 }
 
 .mobileNav_banner{
     @include vars.buttonAction(banner,200px);
     font-size: 1.6em;
-   right: 0;
-   left: 0;
+    left: 0;
+    right: 0;
+   position: fixed;
    margin: auto;
    &::after{
     @include vars.barras();
@@ -78,7 +142,57 @@ picture{
 }
 }
 
-// HEADER
+// -------------------------------------------------------
+// -------------------BUTTONS---------------------
+// -------------------------------------------------------
+.buttonAction{
+ @include vars.buttonAction(banner);
+ img{
+    filter: invert(100%);
+    width: 65%;
+ }
+&::after{
+    @include vars.barras();
+    top: -0.57em;
+    right: calc(13px/100%)*100%;
+}
+}
+
+.backButton{
+    @include vars.buttonAction(bannerback);
+    top: calc(100% - 50px);
+    left: 10px;
+    &::after{
+        @include vars.barras();
+        top: 0.35em;
+        rotate: 270deg;
+        right: 1.35em;
+    }
+  }
+
+  .button_route{
+    @include comunFlex(row);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    border:2px solid vars.$yellow;
+    width: 180px;
+    height: 50px;
+    border-radius: 7px;
+    background-color: vars.$green;
+    color: vars.$white;
+    font-size: 1.3em;
+    margin: 1em auto;
+    box-shadow: 0 1.3px 2px  vars.$black;
+    transition: all 0.5s  ease;
+    &:hover{
+        box-shadow: 0 0px 2px  vars.$black;
+    }
+}
+// -------------------------------------------------------
+// --------------------HEADER--------------------
+// -------------------------------------------------------
 #header_container{
     width: 100%;
 }
@@ -100,16 +214,12 @@ picture{
     position: relative;
     bottom: -5px;
 }
-// MAIN BODY
-
+// -------------------------------------------------------
+// -------------------MAIN---------------------
+// -------------------------------------------------------
 #main{
     min-height: 100vh;
    width: 100%;
-   background-image: url("./svg/body/background.svg");
-   background-attachment: fixed;
-   background-size: contain;
-   background-repeat: repeat-y;
-   
 }
 
 .main_title{
@@ -149,6 +259,7 @@ max-width: 600px;
     text-shadow: 0 0 1px vars.$green;
 }
 p{
+    margin: 1em 0;
     font-size: 1.2em;
     font-weight: 400;
     line-height: 1.2em;
@@ -160,7 +271,7 @@ p{
     & #main_about_image{
        width: 98%;
        max-width: 500px;
-       margin: 2em 0;
+      
       
        img{
            box-shadow: 0 0 0.5em vars.$black;      
@@ -173,21 +284,23 @@ p{
         }
      }
 }
+
 // mobile
 .main_products-slider{
     border: 2px solid vars.$yellow;
     border-radius: 8px;
-    width: 300px;
+    min-width: 300px;
+    max-width: 500px;
     height: 200px;
     overflow: hidden;
     position: relative;
 }
 .main_products-section{
-    min-height: 40vh;
+    min-height: 20vh;
 }
 
 .main_recipes-section{
-    min-height: 40vh;
+    min-height: 20vh;
 }
 // mobile
 .main_recipes-gallery-container{
@@ -196,40 +309,86 @@ p{
     height: 300px;
 }
 
+// -------------------------------------------------------
+// -------------------ABOUT---------------------
+// -------------------------------------------------------
 
-// button general verde y amarillo
-.button_route{
-    border: none;
-    font-weight: 700;
-    @include comunFlex(row);
-    border:2px solid vars.$yellow;
-    width: 180px;
-    height: 50px;
-    border-radius: 7px;
-    background-color: vars.$green;
-    color: vars.$white;
-    font-size: 1.3em;
-    margin: auto;
-    box-shadow: 0 1.3px 2px  vars.$black;
-    transition: all 0.5s  ease;
-    &:hover{
-        box-shadow: 0 0px 2px  vars.$black;
-    }
+.about_container{
+    min-height: 100vh;
+    width: 100%;
+    // max-width: 1920px;
 }
 
-@keyframes disp {
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
+.about_container-flex{
+    @include comunFlex(column);
+        section{
+            min-width: 300px;
+            width: 97%;
+            flex:1;
+            background-color: #4442;
+            border-radius: 8px;
+            margin: 0.5em 0;
+            @include comunFlex(column);
+            justify-content: center;
+            align-items: center;
+            padding: 0.4em;
+            box-shadow: 0 1px 4px #000;
+            h2{
+                margin-bottom: 0.5em;
+            }
+            p{
+                margin-bottom: 1em;
+                text-align: justify;
+                font-size: 1.12em;
+            }
+            picture{
+                position: relative;
+                img{
+                    border-radius: 8px;
+                }
+                span{
+                        border-radius: 0 0 8px 8px;
+                        color: #fff;
+                        width: 100%;
+                        height: 15%;
+                        background-color: #0007;
+                        position:absolute;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        bottom: 0;
+                        left: 0
+                        }
+                }
+        }
 }
 
+// -------------------------------------------------------
+// -------------------PRODUCTS---------------------
+// -------------------------------------------------------
 
-// FOOTER
+.product_container{
+    min-height: 100vh;
+    width: 100%;
+    // max-width: 1920px;
+}
+
+// -------------------------------------------------------
+// -------------------RECIPES---------------------
+// -------------------------------------------------------
+
+.recipes_container{
+    min-height: 100vh;
+    width: 100%;
+    // max-width: 1920px;
+}
+
+// -------------------------------------------------------
+// ---------------------FOOTER-------------------
+// -------------------------------------------------------
 
 #footer{
+    @include comunFlex(column);
     padding: 1em;
     // cabiar en fullscreen
     min-height: 50vh;
@@ -237,19 +396,21 @@ p{
     background-color: vars.$green;
     // position: relative;
     color: vars.$white;
-    @include comunFlex(column);
     justify-content: space-between;;
     .footer_map{
         background-color: vars.$yellow;
         border-radius: 8px;
         width: 95%;
+        height: 300px;
        text-align: center;
-        max-width: 300px;
-        max-height: 300px;
+        max-width: 500px;
+        max-height: 500px;
         box-shadow: 0 1px 5px #0009;
+        display: flex;
+        flex-direction: column;
         iframe{
             border-radius: 8px 8px 0 0;
-            // border: 4px solid vars.$yellow;
+
             height: 100%;
             width: 100%;
         }
@@ -285,12 +446,24 @@ p{
             height: 70%;
         }
     }
-
     .footer_text-ico2{
         @include comunFlex();
         font-size: 1.1em;
         a{
             margin-bottom:0.2em;
         }
+    }
+}
+
+// -------------------------------------------------------
+// ---------------------KEYFRAMES-------------------
+// -------------------------------------------------------
+
+@keyframes disp {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
     }
 }

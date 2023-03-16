@@ -13,9 +13,10 @@ $font-sans: 'Open Sans', sans-serif;
 $font-quick: 'Quicksand', sans-serif;
 $font-roboto: 'Roboto', sans-serif;
 
-@mixin buttonAction($name:'none',$width:40px,$height:40px){
+@mixin buttonAction($name:'none',$width:40px,$height:40px,$background
+:$green){
     position: fixed;
-    background-color: $green;
+    background-color: $background;
     color: $white;
     border-radius: 4px;
     border: 2px solid $yellow;
@@ -53,22 +54,29 @@ $font-roboto: 'Roboto', sans-serif;
 
 @keyframes bannerback {
 from {
-    transform: translate(-100px);
+    transform: translateX(-100px);
 }
 to {
-    transform: translate(0);
+    transform: translateX(0);
 }}
 
-@mixin barras($eje:y){
+@mixin barras($eje:y,$tobo:8px,$rile:4px,$shadow:0 -4px 6px){
     @if $eje == x{
         transform: rotate(90deg);
     }
     content:"";
     position: absolute;
     // right: calc(100%/4px + 100%/20px);
-    border-top: 8px solid orange;
-    border-right: 4px solid orange;
-    border-bottom: 8px solid $yellow;
-    border-left: 4px solid $yellow;
-    box-shadow: 0 -4px 6px $black;
+    border-top: $tobo solid orange;
+    border-right: $rile solid orange;
+    border-bottom: $tobo solid $yellow;
+    border-left: $rile solid $yellow;
+    box-shadow:  $shadow  $black;
+}
+
+@mixin backImage($url:'',$position:center,$repeat:no-repeat,$size:cover){
+    background-image: url($url);
+        background-position: $position;
+        background-repeat:$repeat;
+        background-size: $size;
 }

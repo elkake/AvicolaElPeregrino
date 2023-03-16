@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function lazyLoad (margin = 0, infiniteView = true) {
+export function useLazyLoad (margin = 0, infiniteView = true) {
   const elementRef = useRef()
 
   useEffect(() => {

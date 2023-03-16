@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function ButtonRoute ({ nameClass = 'button_route', content = 'button' }) {
+function ButtonRoute ({ nameClass = 'button_route', content = 'button', to = '/' }) {
   return (
-    <button className={nameClass}>{content}</button>
+    <Link to={to} className={nameClass}>{content}</Link>
   )
 }
 

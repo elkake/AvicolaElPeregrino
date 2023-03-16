@@ -1,8 +1,8 @@
 import React from 'react'
 
-function ButtonAction ({ className, children = 'hola' }) {
+function ButtonAction ({ nameClass = '', children = 'hola', event = null }) {
   return (
-    <div className={`buttonAction ${className}`}>
+    <div onClick={event} className={`buttonAction ${nameClass}`}>
         {children}
     </div>
   )

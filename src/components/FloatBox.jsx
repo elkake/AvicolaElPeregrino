@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import './FloatBox.css'
-function FloatBox ({ width = 350, height = 100, nameClass = '', perspective = 580, scale = 1.05, image = '#', alt = '', dinamic = true }) {
+function FloatBox ({ width = 98, height = 100, nameClass = '', perspective = 580, scale = 1.05, image = '#', alt = '', dinamic = true }) {
   const test = useRef()
   let heightBox
   let widthBox
@@ -12,7 +12,7 @@ function FloatBox ({ width = 350, height = 100, nameClass = '', perspective = 58
 
     test.current.style = `  transition:box-shadow 0.4s linear,transform 0.3s linear;
     min-height: ${height}px;
-       width:${width}px;
+       width:${width}%;
     `
   }, [])
 

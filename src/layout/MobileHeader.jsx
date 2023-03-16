@@ -22,6 +22,10 @@ function MobileHeader () {
             <img src={farm1} alt='El peregrino' />
           </picture>
         </div>
+        <div id="main_title" className="main_title">
+          <h1>AVICOLA EL PEREGRINO SRL</h1>
+          <em>Pollo de calidad,venta por mayor y menor</em>
+        </div>
     </div>
   )
 }
